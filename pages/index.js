@@ -68,6 +68,8 @@
 // }
 
 import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
+import Avatar from "@mui/material/Avatar";
 
 export default function Component() {
   const { data: session } = useSession();
@@ -75,7 +77,9 @@ export default function Component() {
     console.log("session---> ", session);
     return (
       <>
-        Token in as {session.user} <br />
+        <Avatar alt={session.user.email} src={session.user[0].image} />
+        Name in as {session.user[0].name} <br />
+        Email in as {session.user[0].email} <br />
         <button onClick={() => signOut()}>Sign out</button>
       </>
     );

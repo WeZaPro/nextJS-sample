@@ -20,11 +20,21 @@ export const authOptions = {
           }
         );
         const data = await res.json();
-        console.log("data---> ", data.token);
+        console.log("data success---> ", data.success);
+        console.log("data token---> ", data.token);
+        console.log("data user---> ", data.user);
+        console.log("data user.name---> ", data.user.name);
+        console.log("data ---> ", data);
 
         // If no error and we have user data, return it
         if (data.success == true) {
-          return data.token;
+          return [
+            {
+              email: data.user.email,
+              name: data.user.name,
+              image: "https://www.pngmart.com/files/3/Man-PNG-Pic.png",
+            },
+          ];
         }
         return null;
       },
