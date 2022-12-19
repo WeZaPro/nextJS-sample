@@ -6,20 +6,25 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
+        email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const res = await fetch("https://www.mecallapi.com/api/login", {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        });
+        // const res = await fetch("https://www.mecallapi.com/api/login", {
+        const res = await fetch(
+          "https://mern-api-yp9k.onrender.com/api/signin",
+          {
+            method: "POST",
+            body: JSON.stringify(credentials),
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         const data = await res.json();
+        console.log("data---> ", data.token);
 
         // If no error and we have user data, return it
-        if (data.status == "ok") {
-          return data.user;
+        if (data.success == true) {
+          return data.token;
         }
         return null;
       },
