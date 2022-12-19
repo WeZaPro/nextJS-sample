@@ -25,7 +25,7 @@ export const authOptions = {
       },
     }),
   ],
-  // add secret
+  // add secret แก้ Error Deploy NextJs
   secret: process.env.NEXT_PUBLIC_SECRET,
   callbacks: {
     async jwt({ token, user, account }) {
