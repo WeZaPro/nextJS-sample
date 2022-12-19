@@ -32,7 +32,7 @@ export const authOptions = {
             {
               email: data.user.email,
               name: data.user.name,
-              image: "https://www.pngmart.com/files/3/Man-PNG-Pic.png",
+              image: data.user.image,
             },
           ];
         }
