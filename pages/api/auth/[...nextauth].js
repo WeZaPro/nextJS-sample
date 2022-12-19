@@ -17,10 +17,10 @@ export const authOptions = {
         });
         const data = await res.json();
 
+        // If no error and we have user data, return it
         if (data.status == "ok") {
           return data.user;
         }
-
         return null;
       },
     }),
